@@ -1,0 +1,133 @@
+1.Service API
+
+http://127.0.0.1:8000/api/service:
+
+{
+  "name": "Consulting"
+}
+
+2.Service Item API
+
+http://127.0.0.1:8000/api/service_item:
+
+{
+  "service_data": 1,
+  "name": "Web Development",
+  "description": "We offer scalable websites.",
+  "image": "<upload file>"
+}
+
+3. Blog Categories API
+
+
+http://127.0.0.1:8000/api/blog_categories:
+
+{
+  "category_name": "Tech Trends"
+}
+
+
+4. Blog API
+
+http://127.0.0.1:8000/api/blog:
+
+{
+  "blog_category_data": 1,
+  "title": "The Future of Blockchain",
+  "description": "Detailed post about blockchain.",
+  "image": "<upload file>"
+}
+
+5. NFT Barriers API
+
+http://127.0.0.1:8000/api/nft_barriers:
+
+
+{
+  "name": "Scalability",
+  "description": "Issue with scaling NFTs",
+  "image": "<upload file>"
+}
+
+6. Contact Us API
+
+http://127.0.0.1:8000/api/contact_us:
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "country": "India",
+  "phone_no": 9876543210,
+  "message": "Interested in your services."
+}
+
+
+7. Berries Structure API
+
+http://127.0.0.1:8000/api/berries_structure:
+
+{
+  "description": "Fresh berries batch",
+  "berry_type": "Blueberry",
+  "farm_code": "FARM123",
+  "batch_id": "BATCH456",
+  "harvest_date": "2024-10-01",
+  "quantity_grams": 1200,
+  "certifications": ["Organic", "Fair Trade"],
+  "carbon_offset_kg": 2.5,
+  "grower": "BerryGrow Inc.",
+  "traceability_qr": "QR123456",
+  "current_owner": "Retailer X",
+  "utility_tags": ["Eco", "Traceable"]
+}
+
+
+8. Admin Login API
+
+http://127.0.0.1:8000/api/admin_login:
+
+{
+  "email": "admin@example.com",
+  "password": "securepass123"
+}
+
+
+9. Ad API
+
+http://127.0.0.1:8000/api/ad:
+
+{
+  "file": "<upload file>",
+  "type": "Banner",
+  "title": "Big Sale",
+  "sub_title": "50% Off!"
+}
+
+
+10. User API
+
+http://127.0.0.1:8000/api/user:
+
+
+{
+  "user_id": "USER001",
+  "device_token": "abc123xyz",
+  "name": "Alice",
+  "mobile_no": "9998887776",
+  "email": "alice@example.com",
+  "image": "<upload file>",
+  "aadhar_card_no": "1234-5678-9012",
+  "pan_card_no": "ABCDE1234F"
+}
+
+11. Token API
+
+http://127.0.0.1:8000/api/token:
+
+{
+  "price": 12.5
+}
+
+
+
+
