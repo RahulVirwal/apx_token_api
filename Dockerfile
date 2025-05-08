@@ -1,9 +1,21 @@
-# Use official PHP image with extensions
+# Build Stage
+FROM php:8.2-fpm as build
+
+# Install dependencies & Composer
+RUN apt-get update && apt-get install -y ... # as before
+
+# Copy and build
+WORKDIR /var/www
+COPY . .
+RUN cp .env.example .env \
+    && composer install --no-dev --optimize-autoloader \
+    && php artisan key:generate
+
+# Final Stage
 FROM php:8.2-fpm
 
-# Install system dependencies
+# Only required extensions
 RUN apt-get update && apt-get install -y \
-    build-essential \
     libpng-dev \
     libjpeg-dev \
     libonig-dev \
@@ -11,29 +23,17 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     curl \
-    git \
     libzip-dev \
     libpq-dev \
     mysql-client \
     && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip
 
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=build /usr/bin/composer /usr/bin/composer
+COPY --from=build /var/www /var/www
 
-# Set working directory
 WORKDIR /var/www
+RUN chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
 
-# Copy project files
-COPY . .
-
-# Install Laravel dependencies
-RUN composer install --no-dev --optimize-autoloader
-
-# Set correct permissions
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
-
-# Expose port 8000
 EXPOSE 8000
-
-# Start Laravel server
-CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
