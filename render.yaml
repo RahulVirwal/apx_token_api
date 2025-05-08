@@ -1,24 +1,9 @@
 services:
   - type: web
-    name: laravel-api
+    name: apx_token_api
     env: docker
     plan: free
-    envVars:
-      - key: APP_ENV
-        value: production
-      - key: APP_KEY
-        sync: false
-      - key: APP_DEBUG
-        value: false
-      - key: DB_CONNECTION
-        value: mysql
-      - key: DB_HOST
-        value: aws.connect.psdb.io
-      - key: DB_PORT
-        value: 3306
-      - key: DB_DATABASE
-        sync: false
-      - key: DB_USERNAME
-        sync: false
-      - key: DB_PASSWORD
-        sync: false
+    branch: main
+    dockerfilePath: ./Dockerfile
+    buildCommand: ""
+    startCommand: "php artisan serve --host=0.0.0.0 --port=80"
