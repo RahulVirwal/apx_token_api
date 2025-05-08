@@ -36,6 +36,7 @@ Route::delete('blog_categories/{id}', [BlogCategoryController::class, 'destroy']
 
 // 4. Blog
 Route::get('blog', [BlogController::class, 'index']);
+Route::get('blog/{id}', [BlogController::class, 'show']);
 Route::post('blog', [BlogController::class, 'store']);
 Route::patch('blog/{id}', [BlogController::class, 'update']);
 Route::delete('blog/{id}', [BlogController::class, 'destroy']);
